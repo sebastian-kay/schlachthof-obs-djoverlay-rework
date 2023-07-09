@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Overlay DjBox</title>
+
+  <link rel="icon" type="image/png" href="assets/img/icon_16px.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="assets/img/icon_32px.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/img/icon_64px.png" sizes="64x64">
+
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/fontawesome.all.min.css" rel="stylesheet">
+  <link href="assets/css/animate.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    html, body { 
+		position: relative;
+		width: 1920px;
+		height: 1080px;
+		margin: 0;
+		overflow: hidden;
+		
+	}
+	
+	.full_wrapper {
+		position: relative;
+		width: 1920px;
+		height: 1080px;
+		margin: 0;
+		overflow: hidden;
+	}
+	
+	#djbox {
+		position: absolute;
+		bottom: 463px;
+		left: 74px;
+		width: 465px;
+		height: 180px;
+		box-sizing: border-box;
+		padding: 14px;
+		background-color: #ed4935;
+		/*background-image: url(assets/img/webbanner2.svg);*/
+		background-image: url(assets/img/webbanner3.svg);
+		background-position: -0px -40px;
+		background-repeat: repeat-x;
+		background-size: auto 160px;
+		border-radius: 4px;
+		z-index: 1;
+	
+	}
+	
+	#djnow_name, #djnext_name {
+		font-family: "LeviReBrushed";
+		color: var(--sh-brown);
+		font-size: 2.4rem;
+	}
+	
+	#djnext_name {
+		font-size: 3.2rem;
+	}
+	
+	.next-dj-text {
+		color: var(--sh-brown);
+	}
+
+  </style>
+</head>
+<body>
+	<div class="full_wrapper">
+	<div id="djbox" class="d-flex">
+		<div id="djnow_image" class="align-self-end">
+			<div id="djnow_live" class=""></div></div>
+		<div id="djnow_text" class="ms-3 d-flex flex-column justify-content-end">
+		  <h1 id="djnow_name" class="text-uppercase mt-4 mb-0"></h1>
+		  <p id="djnow_info" class="hide"></p>
+		  <div id="djnow_style"></div>
+		</div>
+	</div>
+	</div>
+
+<!--script src="assets/js/script_overlay.js"></script> 
+<script src="assets/js/script.js"></script-->
+<script>
+let djid;
+let data_db = "";
+let settings_db = "";
+let djs_db = "";
+let styleArray = [];
+let nextDJ_switch_duration = 0;
+let obc1 = new BroadcastChannel('obc1');
+let obc_todock = new BroadcastChannel('obc_todock');
+let reload_bc = new BroadcastChannel('reload_bc');
+
+
+const fetchData = () => {
+	return new Promise((resolve, reject) => (
+		fetch('/load_data_db')
+		.then(res => res.json())
+		.then(data => resolve(data))
+		.catch(err => reject(err))
+		))
+	}
+
+	async function getData(djid, skip_autorec) {
+		data_db = await fetchData();
+		settings_db = data_db.settings;
+		djs_db = data_db.djs;
+
+		if(!djid){ djid = settings_db.djnow; }
+
+		djnow_name.textContent = djs_db[djid].djname;
+		djnow_info.textContent = djs_db[djid].info;
+		if(djs_db[djid].djimage){
+			djnow_image.style.backgroundImage = 'url("assets/img/dj_images/' + djs_db[djid].djimage + '")';
+		} else {
+			djnow_image.style.backgroundImage = 'url("assets/img/dj_images/none.svg")';
+		}
+		styleArray = djs_db[djid].style2;
+		djnow_style.innerHTML = "";
+			for(let i in styleArray) {
+				djnow_style.innerHTML += '<span class="badge bg-sh-brown mb-2"><i class="fa-solid fa-hashtag mr-0"></i><span class="text-uppercase">'+styleArray[i]+'</span></span>';
+			}
+
+		nextDJ_switch_duration = Number(settings_db.switch_dj_anim_duration);
+		if(!skip_autorec){
+			if(djs_db[djid].rec){
+				start_auto_rec();
+			}
+		}	
+		//console.log(settings_db);
+		//console.log(djs_db);
+		return Promise.resolve("Success");
+	}
+
+	function start_auto_rec(){
+		window.obsstudio.stopRecording();
+		window.obsstudio.startRecording();
+	}
+
+	obc1.onmessage = (messageEvent) => {
+		if (messageEvent.data === 'chage_dj') {
+			setTimeout( () => {
+				getData()
+			}, Number(nextDJ_switch_duration) - 1000 );
+		} else if (messageEvent.data === 'save_dj') {
+			getData()
+		} else if (messageEvent.data === 'toggle_recording') {
+			start_auto_rec();
+		} else if (messageEvent.data === 'stop_recording') {
+			window.obsstudio.getStatus(function (status) {
+				if(!status.recording){
+					window.obsstudio.stopRecording();
+				}
+			});
+		}
+  	}
+
+	reload_bc.onmessage = (messageEvent) => {
+		if (messageEvent.data === 'reload_all') {
+			location.reload();
+		}
+  	}
+	
+	getData(0, true);
+</script>
+</body>
+</html>

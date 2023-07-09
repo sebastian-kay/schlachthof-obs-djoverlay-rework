@@ -1,0 +1,94 @@
+{
+    "settings": {
+        "djnow": "2",
+        "djpreview": "2",
+        "djnext": 0,
+        "show_chatoverlay": 1,
+        "switch_dj_anim_duration": 15000
+    },
+    "djs": [
+        {
+            "id": 0,
+            "djname": "GastDJ",
+            "info": "This is a info text.",
+            "style": "Techno,Dark Techno,Hardtechno",
+            "style2": [
+                "Techno",
+                "Dark Techno",
+                "Hardtechno"
+            ],
+            "djimage": 0,
+            "rec": 0,
+            "homepage": "http://ueberflie.ga"
+        },
+        {
+            "id": 1,
+            "djname": "Sebastian Kay",
+            "info": "Hi ich bin Sebastian Kay, Dj seit knapp 20 Jahren.",
+            "style": "Techno,Dark Techno,Hardtechno",
+            "style2": [
+                "Techno",
+                "Dark Techno",
+                "Hardtechno"
+            ],
+            "djimage": "sebastian_kay.png",
+            "rec": 1,
+            "homepage": "http://ueberflie.ga"
+        },
+        {
+            "id": 2,
+            "djname": "Daniel D.T.S",
+            "info": "Hi ich bin Daniel!",
+            "style": "Techno,Dark Techno,Hardtechno",
+            "style2": [
+                "Techno",
+                "Dark Techno",
+                "Hardtechno"
+            ],
+            "djimage": "dts.jpg",
+            "rec": 1,
+            "homepage": "http://ueberflie.ga"
+        },
+        {
+            "id": 3,
+            "djname": "Floorwärts",
+            "info": "Hi ich bin Daniel!",
+            "style": "Techno,Dark Techno,Hardtechno",
+            "style2": [
+                "Techno",
+                "Dark Techno",
+                "Hardtechno"
+            ],
+            "djimage": "floorwaerts.png",
+            "rec": false,
+            "homepage": "http://ueberflie.ga"
+        },
+        {
+            "id": 4,
+            "djname": "Laura Croft",
+            "info": "This is a info text.",
+            "style": "Techno,Dark Techno,Hardtechno",
+            "style2": [
+                "Techno",
+                "Dark Techno"
+            ],
+            "djimage": "laura_croft.jpg",
+            "rec": true,
+            "homepage": "http://ueberflie.ga"
+        },
+        {
+            "id": 5,
+            "djname": "Tha V",
+            "info": "This is a info text.",
+            "style": "Techno,Dark Techno,Hardtechno",
+            "style2": [
+                "Techno",
+                "Dark Techno",
+                "Hardtechno"
+            ],
+            "djimage": "tha-v.png",
+            "rec": 0,
+            "homepage": "http://ueberflie.ga"
+        }
+    ]
+}

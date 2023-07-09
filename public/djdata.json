@@ -1,0 +1,62 @@
+[
+    {
+        "info": {
+            "djnow": "2",
+            "djnext": 0,
+            "show_chatoverlay": 1,
+            "switch_dj_anim_duration": 25000
+        }
+    },
+    {
+        "djs": [
+            {
+                "id": 0,
+                "djname": "GastDJ",
+                "info": "This is a info text.",
+                "style": "Techno,Melodic Techno,Dark Techno",
+                "djimage": 0,
+                "homepage": "http://ueberflie.ga"
+            },
+            {
+                "id": 1,
+                "djname": "Sebastian Hay",
+                "info": "Hi ich bin Sebastian Kay, Dj seit knapp 20 Jahren.",
+                "style": "Techno,Dark Techno,Hardtechno",
+                "djimage": "sebastian_kay.png",
+                "homepage": "http://ueberflie.ga"
+            },
+            {
+                "id": 2,
+                "djname": "Daniel D.T.S ",
+                "info": "Hi ich bin Daniel!",
+                "style": "Techno,Dark Techno,Hardtechno",
+                "djimage": "dts.jpg",
+                "homepage": "http://ueberflie.ga"
+            },
+            {
+                "id": 3,
+                "djname": "Floorwärts",
+                "info": "Das ist der Infotext über Floorwärts.",
+                "style": "Techno,Dark Techno,Hardtechno",
+                "djimage": "floorwaerts.png",
+                "homepage": "http://ueberflie.ga"
+            },
+            {
+                "id": 4,
+                "djname": "Laura Croft",
+                "info": "This is a info text.",
+                "style": "Techno,Melodic Techno,Dark Techno",
+                "djimage": "laura_croft.jpg",
+                "homepage": "http://ueberflie.ga"
+            },
+            {
+                "id": 5,
+                "djname": "Tha V",
+                "info": "This is a info text.",
+                "style": "Techno,Dark Techno,Hardtechno",
+                "djimage": "tha-v.png",
+                "homepage": "http://ueberflie.ga"
+            }
+        ]
+    }
+]

@@ -1,0 +1,277 @@
+	:root {
+			--sh-orange: #ed4935;
+			--sh-brown: #1e1519;
+			--sh-orange-rgb: 237, 73, 53;
+			--sh-brown-rgb: 30, 21, 25;
+
+			--obs-dark: #181825;
+			--obs-dark-rgb: 24, 24, 37;
+
+			--obs-foreground: #313244;
+			--obs-foreground-rgb: 49, 50, 68;
+			--obs-foreground-hover: #45475a;
+			--obs-foreground-hover-rgb: 69, 71, 90;
+			
+			--bs-darker: #171717;
+			--bs-darker-rgb: 23, 23, 23;
+	}
+	
+	@font-face {
+	  font-family: LeviReBrushed;
+	  src: url(../webfonts/LeviReBrushed.ttf);
+	}
+
+	@font-face {
+	  font-family: "Bahnschrift";
+	  src: url(../webfonts/bahnschrift.ttf);
+	  /*
+	  font-variation-settings: "wght" 700, "wdth" 75;
+	  */
+	}
+
+	.nav-tabs {
+		border-bottom: 2px solid var(--obs-foreground)!important;
+		background-color: rgba(var(--obs-foreground-hover-rgb), 0.1)!important;
+	}
+
+	.nav-tabs .nav-link, .nav-tabs .nav-item .nav-link {
+		color: var(--bs-nav-tabs-link-active-color);
+		background-color: var(--obs-dark)!important;
+		border-color: var(--obs-dark)!important;
+		border-bottom: none!important;
+	}
+
+	.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+		color: var(--bs-nav-tabs-link-active-color);
+		background-color: var(--obs-foreground)!important;
+		border-color: var(--obs-foreground)!important;
+		border-bottom: 2px solid var(--obs-foreground-hover)!important;
+	}
+	
+	.font-schlachthof {
+		font-family: LeviReBrushed;
+	}
+	
+	.bg-sh-orange {
+			background-color: rgba(var(--sh-orange-rgb), 1)!important;
+	}
+
+	.bg-sh-brown {
+		background-color: rgba(var(--sh-brown-rgb), 1)!important;
+	}
+
+	.bg-obs-dark {
+			background-color: rgb(var(--obs-dark-rgb))!important;
+	}
+
+	.bg-obs-foreground {
+			background-color: rgb(var(--obs-foreground-rgb))!important;
+	}
+	
+	#djnow_style > span,
+	#djnext_style > span {
+		font-family: "Bahnschrift";
+		font-variation-settings: "wght" 600, "wdth" 85;
+		color: var(--sh-orange)!important;
+	}
+	
+	#djnow_style span:not(:last-child), #djnext_style span:not(:last-child){
+		margin-right: 0.25rem;
+	}
+
+	.progress {
+		background-color: var(--obs-foreground);
+	}
+
+	.progress-bar {
+		background-color: var(--bs-darker);
+	}
+	
+	.hide {
+		display: none!important;
+	}
+
+	.animate__animated {
+		display: block!important;
+	}
+	
+	.badge {
+		--bs-badge-padding-x: 0.25rem;
+		--bs-badge-padding-y: 0.5rem;
+		padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+	}
+
+	.input-group button.bg-obs-foreground:hover {
+		background-color: rgb(var(--obs-foreground-hover-rgb))!important;
+	}
+
+	.input-group input.bg-obs-foreground,
+	.input-group span.bg-obs-foreground {
+		border-color: rgba(var(--obs-foreground-rgb, 1));
+		/*
+		border-color: #ff00ff;
+		*/
+	}
+	
+	.form-control:focus.bg-obs-foreground, .form-select:focus.bg-obs-foreground {
+		background-color: rgb(var(--obs-foreground-hover-rgb))!important;
+		/*background-color: #ff00ff!important;*/
+		border-color: rgba(var(--bs-darker-rgb), 1);
+		box-shadow: none;
+	}
+
+	input[type=number]::-webkit-outer-spin-button,
+	input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+	}
+	
+	#djnow_image {
+		--image-size: 140px;
+		width:var(--image-size);
+		height: var(--image-size);
+		background-color: #000;
+		border-radius: 50%;
+		border: 8px solid var(--sh-brown);
+		background-size: calc(var(--image-size) - 16px);
+	}
+		
+	#djnow_live {
+		position: relative;
+		top: 0;
+		left: 90px;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		border: 8px solid var(--sh-brown);
+		background-color: #d50741;
+		animation-name: djnow-live-blink;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+	
+	#djnext_image_wrapper {
+		height: 220px;
+	}
+
+	#djnext_image {
+		--image-size: 200px;
+		width: var(--image-size);
+		height: var(--image-size);
+		background-color: #000;
+		border-radius: 50%;
+		border: 8px solid var(--sh-brown);
+		background-size: calc(var(--image-size) - 16px);
+	}
+
+	#djnext_image_blood {
+		/* position: relative; */
+		top: 0;
+		left: 6px;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -60px;
+		/* content: ' '; */
+		width: 183px;
+		height: 200px;
+		/* background-color: #ff00ff; */
+		background-image: url(../img/sh_circle_blood.svg);
+		background-repeat: no-repeat;
+		background-position: 2px 0px;
+	}
+	
+	.overlay-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 1920px;
+		height: 1080px;
+		z-index: 1;
+	}
+	
+	#topbox_loading_bar,
+	#progress_bar_changedj {
+		animation-iteration-count: 1;
+		animation-timing-function: linear;
+	}
+
+	#topbox_loading_bar {
+		position: absolute;
+		width: 100%;
+		height: 6px;
+		bottom: 0;
+		background-color: var(--sh-brown);
+		animation-iteration-count: 1;
+		animation-timing-function: linear;
+	}
+	#progress_bar_changedj {
+		width: 0%;
+	}
+	
+	#topbox_loading_bar.animation,
+	#progress_bar_changedj.animation {
+		/*animation-name: topbox-loading-animation;
+		animation-duration: 25s;*/
+		animation-iteration-count: 1;
+		animation-timing-function: linear;
+	}
+
+	iframe#preview_frame {
+		position: fixed;
+		border: 0;
+		width: 488px;
+		height: 274px;
+		bottom: 0;
+		left: 10px;
+		border-top-width: 4px;
+		border-right-width: 4px;
+		border-left-width: 4px;
+		border-bottom-width: 0px;
+		border-top-left-radius: 0.375rem;
+		border-top-right-radius: 0.375rem;
+		border-color: rgb(var(--obs-foreground-rgb));
+		z-index: 2;
+	}
+
+	
+	/* SVG */
+	
+	.cls-1{fill:none;}
+	.cls-2{fill:#ed4935;}
+	.cls-3{fill:#1e1519;}
+	.cls-4{fill:#101010;}
+	.cls-5{fill:#e51717;}
+	
+	/* Bootstrap 4 Spaceing */
+	.m-0{margin:0 !important}.mt-0,.my-0{margin-top:0 !important}.mr-0,.mx-0{margin-right:0 !important}.mb-0,.my-0{margin-bottom:0 !important}.ml-0,.mx-0{margin-left:0 !important}.m-1{margin:.25rem !important}.mt-1,.my-1{margin-top:.25rem !important}.mr-1,.mx-1{margin-right:.25rem !important}.mb-1,.my-1{margin-bottom:.25rem !important}.ml-1,.mx-1{margin-left:.25rem !important}.m-2{margin:.5rem !important}.mt-2,.my-2{margin-top:.5rem !important}.mr-2,.mx-2{margin-right:.5rem !important}.mb-2,.my-2{margin-bottom:.5rem !important}.ml-2,.mx-2{margin-left:.5rem !important}.m-3{margin:1rem !important}.mt-3,.my-3{margin-top:1rem !important}.mr-3,.mx-3{margin-right:1rem !important}.mb-3,.my-3{margin-bottom:1rem !important}.ml-3,.mx-3{margin-left:1rem !important}.m-4{margin:1.5rem !important}.mt-4,.my-4{margin-top:1.5rem !important}.mr-4,.mx-4{margin-right:1.5rem !important}.mb-4,.my-4{margin-bottom:1.5rem !important}.ml-4,.mx-4{margin-left:1.5rem !important}.m-5{margin:3rem !important}.mt-5,.my-5{margin-top:3rem !important}.mr-5,.mx-5{margin-right:3rem !important}.mb-5,.my-5{margin-bottom:3rem !important}.ml-5,.mx-5{margin-left:3rem !important}
+	.p-0{padding:0 !important}.pt-0,.py-0{padding-top:0 !important}.pr-0,.px-0{padding-right:0 !important}.pb-0,.py-0{padding-bottom:0 !important}.pl-0,.px-0{padding-left:0 !important}.p-1{padding:.25rem !important}.pt-1,.py-1{padding-top:.25rem !important}.pr-1,.px-1{padding-right:.25rem !important}.pb-1,.py-1{padding-bottom:.25rem !important}.pl-1,.px-1{padding-left:.25rem !important}.p-2{padding:.5rem !important}.pt-2,.py-2{padding-top:.5rem !important}.pr-2,.px-2{padding-right:.5rem !important}.pb-2,.py-2{padding-bottom:.5rem !important}.pl-2,.px-2{padding-left:.5rem !important}.p-3{padding:1rem !important}.pt-3,.py-3{padding-top:1rem !important}.pr-3,.px-3{padding-right:1rem !important}.pb-3,.py-3{padding-bottom:1rem !important}.pl-3,.px-3{padding-left:1rem !important}.p-4{padding:1.5rem !important}.pt-4,.py-4{padding-top:1.5rem !important}.pr-4,.px-4{padding-right:1.5rem !important}.pb-4,.py-4{padding-bottom:1.5rem !important}.pl-4,.px-4{padding-left:1.5rem !important}.p-5{padding:3rem !important}.pt-5,.py-5{padding-top:3rem !important}.pr-5,.px-5{padding-right:3rem !important}.pb-5,.py-5{padding-bottom:3rem !important}.pl-5,.px-5{padding-left:3rem !important}
+	
+	/* Keyframe Animations */
+	
+	@keyframes topbox-loading-animation {
+	  from   {width: 0%;}
+	  to  {width: 100%;}
+	}
+
+	@keyframes topbox-loading-animation-reverse {
+	  from   {width: 100%;}
+	  to  {width: 0%;}
+	}
+
+	@keyframes djnow-live-blink {
+      50%  {background-color: #740222;}
+	}
+	
+	@keyframes topboxbganimation {
+	  /*0%   {background-position: -40px -180px;}*/
+	  50%  {background-position: -160px -200px;}
+	  /*100% {background-position: -40px -180px;}*/
+	}
+
+	@keyframes topbox_gradient_animation {
+		0%{background-position:0% 33%}
+		50%{background-position:100% 68%}
+		100%{background-position:0% 33%}
+	}

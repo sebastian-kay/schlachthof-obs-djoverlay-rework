@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fernsteuerung | INDEX 2</title>
+
+    <link rel="stylesheet" id="css-main" href="assets/css/dashmix.min.css" />
+    <link href="assets/css/fontawesome.all.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <div
+      id="page-container"
+      class="enable-page-overlay side-scroll page-header-fixed main-content-boxed side-trans-enabled sidebar-dark page-header-dark dark-mode"
+    >
+    <main id="main-container">
+      <!-- Hero -->
+      <div class="bg-body-light">
+        <div class="content content-full">
+          <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+            <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Buttons</h1>
+            <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">Elements</li>
+                <li class="breadcrumb-item active" aria-current="page">Buttons</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <!-- END Hero -->
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="block block-rounded">
+            <div class="block-header block-header-default">
+              <h3 class="block-title">Bootstrap Alerts</h3>
+            </div>
+            <div class="block-content">
+             
+              <!-- With Titles -->
+              <h2 class="content-heading">With Titles</h2>
+              <div class="row">
+                <div class="col-12">
+                  <div id="testActionAlert" class="alert alert-dark alert-dismissible animate__animated hide" role="alert">
+                    <h3 class="alert-heading fs-4 my-2">Dark</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <p class="mb-0">This is a dark alert message with a <a class="alert-link" href="javascript:void(0)">link</a>!</p>
+                  </div>
+                </div>
+              </div>
+              <!-- END With Titles -->
+            </div>
+          </div>
+      <button onclick="performRemoteAction()" class="btn btn-primary">Aktion ausführen</button>
+    </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // Verbindung zum Server herstellen
+      const socket = io();
+
+      // Aktionen ausführen und an den Server senden
+      function performRemoteAction() {
+        // Aktionen für die Fernsteuerung durchführen
+        // ...
+
+        // Beispiel: Eine Nachricht an den Server senden
+        socket.emit("remoteControl", { action: "performAction" });
+      }
+
+      // Serverantwort empfangen
+      socket.on("remoteControl", (data) => {
+        //alert(data.action);
+
+        if (data.action = "Test1"){
+            document.getElementById("testActionAlert").classList.remove("hide");
+            animateCSS('#testActionAlert', 'zoomInUp');
+            //document.getElementById("testActionAlert").classList.add("animate__zoomInUp");
+            
+            setTimeout(function(){
+                //document.getElementById("testActionAlert").classList.remove("animate__zoomInUp");
+                document.getElementById("testActionAlert").classList.add("animate__bounceOutDown");
+            }, 5000);
+            setTimeout(function(){
+                document.getElementById("testActionAlert").classList.remove("animate__bounceOutDown");
+                document.getElementById("testActionAlert").classList.add("hide");
+            }, 5500);
+        }
+        // Hier können Sie auf die Antwort des Servers reagieren
+        // ...
+      });
+
+      const animateCSS = (element, animation, prefix = 'animate__') =>
+        // We create a Promise and return it
+        new Promise((resolve, reject) => {
+            const animationName = `${prefix}${animation}`;
+            const node = document.querySelector(element);
+
+            node.classList.add(`${prefix}animated`, animationName);
+
+            // When the animation ends, we clean the classes and resolve the Promise
+            function handleAnimationEnd(event) {
+            event.stopPropagation();
+            node.classList.remove(`${prefix}animated`, animationName);
+            resolve('Animation ended');
+            }
+
+            node.addEventListener('animationend', handleAnimationEnd, {once: true});
+        });
+    </script>
+  </body>
+</html>

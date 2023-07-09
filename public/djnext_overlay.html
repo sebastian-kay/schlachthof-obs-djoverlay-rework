@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Overlay</title>
+  <link href="static/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/css/fontawesome.all.min.css" rel="stylesheet">
+  <link href="static/assets/css/animate.min.css" rel="stylesheet">
+  <link href="static/assets/css/style.css" rel="stylesheet">
+  <style>
+    html, body { 
+		position: relative;
+		width: 1920px;
+		height: 1080px;
+		margin: 0;
+		overflow: hidden;
+		
+	}
+	
+	#djbox {
+		position: absolute;
+		bottom: 463px;
+		left: 74px;
+		width: 465px;
+		height: 180px;
+		box-sizing: border-box;
+		padding: 14px;
+		background-color: #ed4935;
+		background-image: url(static/assets/img/webbanner2.svg);
+		background-position: -10px -80px;
+		background-repeat: repeat-x;
+		background-size: auto 160px;
+		border-radius: 4px;
+		z-index: 1;
+	
+	}
+	
+	#djnow_name, #djnext_name {
+		font-family: "LeviReBrushed";
+		color: var(--sh-brown);
+		font-size: 2.4rem;
+	}
+	
+	#djnext_name {
+		font-size: 3.2rem;
+	}
+	
+	.next-dj-text {
+		color: var(--sh-brown);
+	}
+  </style>
+</head>
+<body>
+  
+  <!--div class="container my-4 hide">
+	<div class="form-group">
+		<label for="selectDJ" class="form-label text-light mt-4">Aktueller Dj:</label>
+		<select class="form-select bg-dark text-light mb-2" id="selectDJ"></select>
+		<h4 class="text-light mt-4">Informationen bearbeiten:</h4>
+		<label for="inputDJ_name" class="form-label text-light">Dj Name:</label>
+		<input type="text" class="form-control bg-dark text-light mb-2" id="inputDJ_name">
+		<label for="inputDJ_info" class="form-label text-light">Info Text:</label>
+		<textarea class="form-control bg-dark text-light mb-2" id="inputDJ_info" rows="3"></textarea>
+		<label for="inputDJ_style" class="form-label text-light">Styles:</label>
+		<input type="text" class="form-control bg-dark text-light mb-2" id="inputDJ_style">
+		<button id="changedjBTN" class="btn btn-success">Übernehmen</button>
+	</div>
+  </div-->
+	<div id="topbox" class="hide">
+		<div id="topbox_inner" class="topbox-animation">
+			<div class="d-flex flex-column align-items-center">
+				<h1 class="next-dj-text font-schlachthof mt-3">NOW...</h1>
+				<div id="djnext_image" class="hide mb-3"></div>
+				<div id="djnext_text" class="d-flex flex-column align-items-center">
+				  <h1 id="djnext_name" class="hide text-uppercase mb-0 mt-2"></h1>
+				  <p id="djnext_info" class="hide"></p>
+				  <div id="djnext_style" class="hide"></div>
+				</div>
+			</div>
+		</div>
+		<div id="topbox_loading_bar" class=""></div>
+	</div>
+	<div id="djbox" class="d-flex">
+		<div id="djnow_image" class="align-self-end"></div>
+		<div id="djnow_text" class="ms-4 d-flex flex-column justify-content-end">
+		  <h1 id="djnow_name" class="text-uppercase mt-4 mb-0"></h1>
+		  <p id="djnow_info" class="hide"></p>
+		  <div id="djnow_style"></div>
+		</div>
+	</div>
+	<img class="overlay-img hide" src="static/assets/img/overlay_bg2.svg">
+
+<script src="static/assets/js/script_overlay.js"></script> 
+<script src="static/assets/js/script.js"></script> 
+</body>
+</html>

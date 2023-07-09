@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Fernsteuerung | INDEX 1</title>
+
+  <link rel="stylesheet" id="css-main" href="assets/css/dark.bootstrap.min" />
+  <link href="assets/css/animate.min.css" rel="stylesheet" />
+  <link href="assets/css/animate.min.css" rel="style.css" />
+</head>
+
+<body>
+  <div id="page-container"
+    class="enable-page-overlay side-scroll page-header-fixed main-content-boxed side-trans-enabled sidebar-dark page-header-dark dark-mode">
+    <main id="main-container">
+      <!-- Hero -->
+      <div class="bg-body-light">
+        <div class="content content-full">
+          <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+            <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Buttons</h1>
+            <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">Elements</li>
+                <li class="breadcrumb-item active" aria-current="page">Buttons</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <!-- END Hero -->
+
+      <!-- Page Content -->
+      <div class="content">
+        <!-- Buttons Styles -->
+        <button onclick="performRemoteAction()" class="btn btn-primary">Aktion ausführen</button>
+
+        <div id="djbox" class="d-flex">
+          <div id="djnow_image" class="align-self-end">
+            <div id="djnow_live" class=""></div>
+          </div>
+          <div id="djnow_text" class="ms-3 d-flex flex-column justify-content-end">
+            <h1 id="djnow_name" class="text-uppercase mt-4 mb-0"></h1>
+            <p id="djnow_info" class="hide"></p>
+            <div id="djnow_style"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="assets/js/load_data.js"></script>
+  <script>
+  async function getData(djid, skip_autorec) {
+    data_db = await fetchData();
+    settings_db = data_db.settings;
+    djs_db = data_db.djs;
+
+    if (!djid) {
+      djid = settings_db.djnow;
+    }
+
+    djnow_name.textContent = djs_db[djid].djname;
+    djnow_info.textContent = djs_db[djid].info;
+    if (djs_db[djid].djimage) {
+      djnow_image.style.backgroundImage = 'url("assets/img/dj_images/' + djs_db[djid].djimage + '")';
+    } else {
+      djnow_image.style.backgroundImage = 'url("assets/img/dj_images/none.svg")';
+    }
+    styleArray = djs_db[djid].style2;
+    djnow_style.innerHTML = "";
+    for (let i in styleArray) {
+      djnow_style.innerHTML += '<span class="badge bg-sh-brown mb-2"><i class="fa-solid fa-hashtag mr-0"></i><span class="text-uppercase">' + styleArray[i] + '</span></span>';
+    }
+
+    /*nextDJ_switch_duration = Number(settings_db.switch_dj_anim_duration);
+    if (!skip_autorec) {
+      if (djs_db[djid].rec) {
+        start_auto_rec();
+      }
+    }*/
+    console.log(settings_db);
+    console.log(djs_db);
+    return Promise.resolve("Success");
+  }
+
+  // Verbindung zum Server herstellen
+  const socket = io();
+
+  // Aktionen ausführen und an den Server senden
+  function performRemoteAction() {
+    socket.emit("remoteControl", {
+      action: "Test1"
+    });
+  }
+
+  // Serverantwort empfangen
+  socket.on("remoteControl", (data) => {
+    //alert(data.action);
+    // Hier können Sie auf die Antwort des Servers reagieren
+    // ...
+  });
+
+  getData();
+  </script>
+</body>
+
+</html>
